@@ -1,4 +1,4 @@
-Title: "Customer Churn Prediction in R"
+# Customer Churn Prediction in R
 Ayaan Siddiqui
 
 # **Step 1: Introduction**
