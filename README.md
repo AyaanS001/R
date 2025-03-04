@@ -20,7 +20,7 @@ This project analyzes customer churn in a telecommunications company using **R**
 - **Key Features:** Customer demographics, contract type, monthly charges, tenure, and payment methods.
 
 ## **Results & Insights**
-- **Key churn predictors:** **Tenure, MonthlyCharges, and Contract Type**.
+- **Key churn predictors:** ** Monthly Charges, and Contract Type**.
 - **Customers with month-to-month contracts are more likely to churn**.
 - **Lower tenure customers have a higher churn rate**.
 - **Further improvements**: Use Random Forest or Gradient Boosting for better predictions.
