@@ -12,7 +12,7 @@ This project analyzes customer churn in a telecommunications company using **R**
 - **Modeling:** Logistic Regression & Decision Tree
 
 ## Dataset
-- Telco Customer Churn Dataset
+- **Telco Customer Churn Dataset**
 - **Source:** Publicly available on Kaggle & IBM
 - **Rows:** 7,043
 - **Columns:** 21
