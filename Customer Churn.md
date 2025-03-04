@@ -97,6 +97,18 @@ churn_data$TotalCharges[is.na(churn_data$TotalCharges)] <- median(churn_data$Tot
 # Remove duplicate customer IDs
 churn_data <- churn_data[!duplicated(churn_data$customerID), ]
 ```
+```r
+customerID           gender    SeniorCitizen          Partner       Dependents 
+               0                0                0                0                0 
+          tenure     PhoneService    MultipleLines  InternetService   OnlineSecurity 
+               0                0                0                0                0 
+    OnlineBackup DeviceProtection      TechSupport      StreamingTV  StreamingMovies 
+               0                0                0                0                0 
+        Contract PaperlessBilling    PaymentMethod   MonthlyCharges     TotalCharges 
+               0                0                0                0                0 
+           Churn 
+               0
+```
 
 ## **Step 6: Exploratory Data Analysis (EDA)**
 ```r
@@ -113,6 +125,8 @@ ggplot(churn_data, aes(x = tenure, fill = Churn)) +
   geom_histogram(binwidth = 5, position = "dodge") +
   ggtitle("Tenure Distribution by Churn Status")
 ```
+<img width="620" alt="Screenshot 2025-03-03 at 6 55 50 PM" src="https://github.com/user-attachments/assets/2661c039-3678-4e8f-ba3e-f5ab12080dcb" />
+
 
 ## **Step 7: Model Building (Logistic Regression & Decision Tree)**
 ```r
@@ -135,6 +149,63 @@ logit_pred_class <- ifelse(logit_pred > 0.5, "Yes", "No")
 
 # Evaluate model performance
 confusionMatrix(as.factor(logit_pred_class), testData$Churn)
+```
+```r
+l:
+glm(formula = Churn ~ tenure + MonthlyCharges + Contract, family = "binomial", 
+    data = trainData)
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      -1.633451   0.107623 -15.178   <2e-16 ***
+tenure           -0.034579   0.002441 -14.169   <2e-16 ***
+MonthlyCharges    0.028870   0.001612  17.906   <2e-16 ***
+ContractOne year -1.158798   0.123867  -9.355   <2e-16 ***
+ContractTwo year -2.095441   0.196762 -10.650   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 5707.1  on 4930  degrees of freedom
+Residual deviance: 4280.1  on 4926  degrees of freedom
+AIC: 4290.1
+
+Number of Fisher Scoring iterations: 6
+
+> 
+> # Predict on test data
+> logit_pred <- predict(logit_model, testData, type = "response")
+> logit_pred_class <- ifelse(logit_pred > 0.5, "Yes", "No")
+> 
+> # Confusion matrix to evaluate model performance
+> confusionMatrix(as.factor(logit_pred_class), testData$Churn)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction   No  Yes
+       No  1394  286
+       Yes  158  274
+                                         
+               Accuracy : 0.7898         
+                 95% CI : (0.7718, 0.807)
+    No Information Rate : 0.7348         
+    P-Value [Acc > NIR] : 2.764e-09      
+                                         
+                  Kappa : 0.418          
+                                         
+ Mcnemar's Test P-Value : 1.669e-09      
+                                         
+            Sensitivity : 0.8982         
+            Specificity : 0.4893         
+         Pos Pred Value : 0.8298         
+         Neg Pred Value : 0.6343         
+             Prevalence : 0.7348         
+         Detection Rate : 0.6600         
+   Detection Prevalence : 0.7955         
+      Balanced Accuracy : 0.6937         
+                                         
+       'Positive' Class : No
 ```
 
 ## **Step 8: Conclusion**
