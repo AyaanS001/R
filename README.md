@@ -25,7 +25,5 @@ This project analyzes customer churn in a telecommunications company using **R**
 - **Lower tenure customers have a higher churn rate**.
 - **Further improvements**: Use Random Forest or Gradient Boosting for better predictions.
 
-## **Future Improvements**
-- Implement Random Forest and XGBoost models.
-- Build an interactive Shiny dashboard for churn insights.
-- Optimize feature engineering to improve model accuracy.
+## **How I Used AI To Improve this project**
+
