@@ -1,6 +1,7 @@
 # Customer Churn Prediction in R
 
-## Project Overview**
+## Project Overview
+### (The file to this project is right above)
 This project analyzes customer churn in a telecommunications company using **R**. The goal is to identify key factors that contribute to churn and build predictive models using **logistic regression** and **decision trees**. This will help businesses develop strategies to improve customer retention.
 
 ## **Tools & Technologies**
