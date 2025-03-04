@@ -1,5 +1,4 @@
 # Customer Churn Prediction in R
-Ayaan Siddiqui
 
 # **Step 1: Introduction**
 This project analyzes customer churn in a telecom dataset using **logistic regression** and **decision trees**. The objective is to identify key factors influencing churn and build predictive models.
